@@ -6,10 +6,10 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
                     $mdIconProvider) {
     $stateProvider
-      .state('home', {
-        url: '',
-        templateUrl: 'app/views/main.html',
-        controller: 'MainController',
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/views/index.html',
+        //controller: 'MainController',
         controllerAs: 'vm',
         abstract: true
       })
