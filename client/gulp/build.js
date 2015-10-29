@@ -85,12 +85,15 @@ gulp.task('clean', function (done) {
   $.del([paths.dist + '/', paths.tmp + '/'], done);
 });
 
-
-gulp.task('copy-html', function () {
-    return gulp.src(paths.dist + '/index.html')
-        .pipe($.rename('index.blade.php'))
-        .pipe(gulp.dest('../server/resources/views/'));
+gulp.task('copy-html', function() {
+  return gulp.watch(paths.dist + '/index.html', function(obj) {
+    gulp.src(obj.path)
+      .pipe($.rename('index.blade.php'))
+      .pipe(gulp.dest('../server/resources/views/'), {overwrite: true});
+  });
 });
+
+
 
 gulp.task('build', ['html', 'images', 'fonts', 'misc','copy-html']);
 

@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ngTouch',
-  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app'])
+  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app','satellizer'])
 
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
-                    $mdIconProvider) {
+                    $mdIconProvider, $authProvider) {
+     // Satellizer configuration that specifies which API
+            // route the JWT should be retrieved from
+            $authProvider.loginUrl = '/api/authenticate';
     $stateProvider
-      .state('login', {
-        url: '/login',
-        templateUrl: 'app/views/index.html',
-        //controller: 'MainController',
+      .state('auth', {
+        url: '',
+        templateUrl: 'app/views/login.html',
+        controller: 'AuthController as auth'
+      })
+      .state('home', {
+        url: '/home',
+        templateUrl: 'app/views/main.html',
+        controller: 'MainController',
         controllerAs: 'vm',
         abstract: true
       })

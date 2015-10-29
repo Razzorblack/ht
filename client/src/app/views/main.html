@@ -53,7 +53,7 @@
             <img class="img-circle" ng-src="assets/images/feynman.jpg">
             <md-menu>
                 <md-button class="capitalize" ng-click="$mdOpenMenu()" aria-label="Open menu">
-                    <span>Richard Feynman</span>
+                    <span ng-if="authenticated"> {{currentUser.name}} </span>
                     <i class="material-icons">keyboard_arrow_down</i>
                 </md-button>
                 <md-menu-content>
